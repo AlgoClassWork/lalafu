@@ -8,7 +8,13 @@
 <body>
 
     <h1>Доска обьявлений</h1>
-    
+
+    <form action="/create" method="post">
+        <input type="text" name="title" placeholder="Заголовок" required>
+        <textarea type="text" name="content" required></textarea>
+        <button type="submit">Создать</button>
+    </form>
+
     {% for ad in ads %}
         <h2>{{ ad[1] }}</h2>
         <p>{{ ad[2] }}</p>
