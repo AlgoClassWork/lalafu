@@ -1,41 +1,45 @@
 import sqlite3
 
-def create_db():
-    connection = sqlite3.connect('ad.db')
-    cursor = connection.cursor()
-    cursor.execute('''
-    CREATE TABLE IF NOT EXISTS ad (
-    id INTEGER PRIMARY KEY AUTOINCREMENT,
-    title TEXT NOT NULL,
-    content TEXT NOT NULL) ''')
-    connection.commit()
-    connection.close()
+DB_NAME = "ads.db"
 
-def create_ad(title, content):
-    connection = sqlite3.connect('ad.db')
-    cursor = connection.cursor()
-    cursor.execute('INSERT INTO ad (title, content) VALUES (?,?)', (title, content))
-    connection.commit()
-    connection.close()
+def init_db():
+    conn = sqlite3.connect(DB_NAME)
+    cursor = conn.cursor()
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS ads (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            title TEXT NOT NULL,
+            content TEXT NOT NULL
+        )
+    """)
+    conn.commit()
+    conn.close()
 
-def read_ad():
-    connection = sqlite3.connect('ad.db')
-    cursor = connection.cursor()
-    cursor.execute('SELECT * FROM ad')
+def get_ads():
+    conn = sqlite3.connect(DB_NAME)
+    cursor = conn.cursor()
+    cursor.execute("SELECT id, title, content FROM ads")
     ads = cursor.fetchall()
-    connection.close()
+    conn.close()
     return ads
 
-def update_ad(id, title, content):
-    connection = sqlite3.connect('ad.db')
-    cursor = connection.cursor()
-    cursor.execute('UPDATE ad SET title=?, content=? WHERE id=?', (title, content, id))
-    connection.commit()
-    connection.close()
+def create_ad(title, content):
+    conn = sqlite3.connect(DB_NAME)
+    cursor = conn.cursor()
+    cursor.execute("INSERT INTO ads (title, content) VALUES (?, ?)", (title, content))
+    conn.commit()
+    conn.close()
 
-def delete_ad(id):
-    connection = sqlite3.connect('ad.db')
-    cursor = connection.cursor()
-    cursor.execute('DELETE FROM ad WHERE id=?', (id))
-    connection.commit()
-    connection.close()
+def update_ad(ad_id, title, content):
+    conn = sqlite3.connect(DB_NAME)
+    cursor = conn.cursor()
+    cursor.execute("UPDATE ads SET title = ?, content = ? WHERE id = ?", (title, content, ad_id))
+    conn.commit()
+    conn.close()
+
+def delete_ad(ad_id):
+    conn = sqlite3.connect(DB_NAME)
+    cursor = conn.cursor()
+    cursor.execute("DELETE FROM ads WHERE id = ?", (ad_id,))
+    conn.commit()
+    conn.close()
