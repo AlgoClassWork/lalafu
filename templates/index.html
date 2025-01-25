@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Доска обьявлений</title>
+</head>
+<body>
+
+    <h1>Доска обьявлений</h1>
+    
+    {% for ad in ads %}
+        <h2>{{ ad[1] }}</h2>
+        <p>{{ ad[2] }}</p>
+    {% endfor %}
+    
+</body>
+</html>
