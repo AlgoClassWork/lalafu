@@ -3,28 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Доска обьявлений</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Доска объявлений</title>
 </head>
 <body>
-
-    <h1>Доска обьявлений</h1>
-
-    <form action="/create" method="post">
-        <input type="text" name="title" placeholder="Заголовок" required>
-        <textarea type="text" name="content" required></textarea>
-        <button type="submit">Создать</button>
-    </form>
-
-    {% for ad in ads %}
-        <h2>{{ ad[1] }}</h2>
-        <p>{{ ad[2] }}</p>
-        <form action="/update/{{ ad[0] }}" method="post">
-            <input type="text" name="title" value="{{ad[1]}}" required>
-            <textarea type="text" name="content required"> {{ad[1]}} </textarea>
-            <button type="submit">Обновить</button>
+    <div class="container">
+        <h1>Доска объявлений</h1>
+        <form action="/create" method="post" class="create-form">
+            <input type="text" name="title" placeholder="Заголовок" required>
+            <textarea name="content" placeholder="Содержание" required></textarea>
+            <button type="submit">Создать</button>
         </form>
-        <a href="/delete/{{ ad[0] }}">Удалить</a>
-    {% endfor %}
-    
+        <ul class="ads-list">
+            {% for ad in ads %}
+            <li>
+                <h2>{{ ad[1] }}</h2>
+                <p>{{ ad[2] }}</p>
+                <form action="/update/{{ ad[0] }}" method="post" class="update-form">
+                    <input type="text" name="title" value="{{ ad[1] }}" required>
+                    <textarea name="content" required>{{ ad[2] }}</textarea>
+                    <button type="submit">Обновить</button>
+                </form>
+                <a href="/delete/{{ ad[0] }}" class="delete-button">Удалить</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
 </body>
 </html>
