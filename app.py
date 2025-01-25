@@ -23,4 +23,9 @@ def update(id):
     database.update_ad(id, title, content)
     return redirect(url_for('index'))
 
+@app.route('/delete/<int:id>')
+def delete(id):
+    database.delete_ad(id)
+    return redirect(url_for('index'))
+
 app.run()
