@@ -16,4 +16,11 @@ def create():
     database.create_ad(title, content)
     return redirect(url_for('index'))
 
+@app.route('/update/<int:id>', methods=['POST'])
+def update(id):
+    title = request.form.get('title')
+    content = request.form.get('content')
+    database.update_ad(id, title, content)
+    return redirect(url_for('index'))
+
 app.run()
