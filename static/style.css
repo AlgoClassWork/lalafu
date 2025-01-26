@@ -1,0 +1,124 @@
+/* Основные стили для всего документа */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+    font-size: 2.5em;
+    margin-bottom: 30px;
+}
+
+/* Стили для формы создания объявления */
+.create-form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 40px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.create-form input,
+.create-form textarea {
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1em;
+}
+
+.create-form button {
+    padding: 10px;
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.create-form button:hover {
+    background-color: #45a049;
+}
+
+/* Стили для списка объявлений */
+.ads-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.ads-list li {
+    padding: 20px;
+    margin-bottom: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.ads-list h2 {
+    margin-top: 0;
+    font-size: 1.8em;
+    color: #333;
+}
+
+.ads-list p {
+    font-size: 1.2em;
+    color: #666;
+    margin: 10px 0;
+}
+
+.update-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.update-form input,
+.update-form textarea {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.update-form button {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 10px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.update-form button:hover {
+    background-color: #0056b3;
+}
+
+.delete-button {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #f44336;
+    color: #fff;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 1em;
+    transition: background-color 0.3s ease;
+}
+
+.delete-button:hover {
+    background-color: #e53935;
+}
